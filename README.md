@@ -51,8 +51,16 @@ This project focuses on analyzing customer churn behavior in a telecom company. 
 
 ## 📈 Key Insights & visualization
 
-* Customers with **month-to-month contracts** have the highest churn
-* Higher **monthly charges** increase churn probability
+* Churn rate by Contract type
+  
+  <img src="Contract.png" width="400">
+  
+Customers with month-to-month exhibits the highest churn rate
+ 
+* Churn by monthly price
+
+ <img src="Contract.png" width="400">
+  
 * **New customers (low tenure)** are more likely to churn
 * Senior citizens show slightly higher churn rate
 
