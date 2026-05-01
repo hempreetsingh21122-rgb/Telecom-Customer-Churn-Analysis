@@ -51,18 +51,59 @@ This project focuses on analyzing customer churn behavior in a telecom company. 
 
 ## 📈 Key Insights & visualization
 
-* Churn rate by Contract type
+* Churn by Contract Type
   
-  <img src="Contract.png" width="400">
-  
-Customers with month-to-month exhibits the highest churn rate
- 
-* Churn by monthly price
-
  <img src="Contract.png" width="400">
   
-* **New customers (low tenure)** are more likely to churn
-* Senior citizens show slightly higher churn rate
+Insight:- Customers on monthly plans are more likely to churn due to lower commitment compared to long-term contracts.
+
+
+* Customer Churn Across Internet Service Types
+
+ <img src="Internet_type.png" width="400">
+
+ Insight:- Higher churn observed among Fiber Optic customers suggests possible dissatisfaction with service quality. 
+
+  
+  
+* Impact of Monthly Charges on Customer Churn
+
+<img src="Pricing.png" width="400">
+
+Insight:- This suggests that pricing may influence customer retention.
+
+
+* Churn by Age group
+
+<img src="age_group.png" width="400">
+
+Insight:- Higher churn observed among senior customers, indicating potential service dissatisfaction within this segment.
+
+
+* Reasons for Customer Churn
+
+<img src="churn_reason.png" width="400">
+
+Insight:- Churn is primarily driven by competitors, while attitude-related issues and dissatisfaction also contribute significantly.
+
+
+* Churn Trends Across Customer Tenure
+
+<img src="Churn by tenure.png" width="400">
+
+Insight:- Higher churn in the first 6 months suggests that early customer experience plays a critical role in retention.
+
+
+
+
+
+Insight:- 
+
+* Other Contributing Factors to Churn
+
+<img src="Other_factors.png" width="400">
+  
+
 
 ---
 
