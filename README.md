@@ -3,6 +3,12 @@ End-to-end customer churn analysis using SQL, Python, and Power BI to identify k
 
 # 📊 Customer Churn Analysis
 
+### 📌 Problem Statement
+
+The telecom company is facing a churn rate of **26.5%**, with **1,869 customers lost**, resulting in an estimated revenue loss of **$139,000**.
+
+However, the key drivers behind this churn are not clearly understood. This project aims to analyze customer data to identify the main factors influencing churn and provide actionable insights to improve customer retention.
+
 ## 📌 Project Overview
 
 This project focuses on analyzing customer churn behavior in a telecom company. The goal is to identify key factors influencing customer churn and provide actionable insights to reduce customer loss.
@@ -29,7 +35,13 @@ This project focuses on analyzing customer churn behavior in a telecom company. 
 
 ## 📂 Dataset
 
-- Telecom Customer Churn dataset with structured customer-level data  
+- Telecom Customer Churn dataset with structured customer-level data
+
+- The dataset contains customer-level information from a telecom company, used to analyze churn behavior.
+
+   - Total Records (Rows): 7,043
+   - Total Features (Columns): 21
+   - Target Variable: Churn (Yes/No)
 
 - Data categories:
   - Customer Demographics  
@@ -41,11 +53,14 @@ This project focuses on analyzing customer churn behavior in a telecom company. 
 
 ## 🔍 Key Analysis Performed
 
-* Churn rate analysis
-* Contract type vs churn
-* Monthly charges impact
-* Tenure distribution
-* Customer segmentation
+- Contract Type vs Churn  
+- Internet Service vs Churn  
+- Monthly Charges Impact  
+- Tenure Analysis  
+- Age Group Analysis  
+- Churn Reasons  
+- Secondary Factors  
+- Service Usage Impact  
 
 ---
 
@@ -58,11 +73,13 @@ This project focuses on analyzing customer churn behavior in a telecom company. 
 Insight:- Customers on monthly plans are more likely to churn due to lower commitment compared to long-term contracts.
 
 
+
 * Customer Churn Across Internet Service Types
 
  <img src="Internet_type.png" width="400">
 
  Insight:- Higher churn observed among Fiber Optic customers suggests possible dissatisfaction with service quality. 
+ 
 
   
   
@@ -73,6 +90,7 @@ Insight:- Customers on monthly plans are more likely to churn due to lower commi
 Insight:- This suggests that pricing may influence customer retention.
 
 
+
 * Churn by Age group
 
 <img src="age_group.png" width="400">
@@ -80,11 +98,13 @@ Insight:- This suggests that pricing may influence customer retention.
 Insight:- Higher churn observed among senior customers, indicating potential service dissatisfaction within this segment.
 
 
+
 * Reasons for Customer Churn
 
 <img src="churn_reason.png" width="400">
 
 Insight:- Churn is primarily driven by competitors, while attitude-related issues and dissatisfaction also contribute significantly.
+
 
 
 * Churn Trends Across Customer Tenure
@@ -95,13 +115,11 @@ Insight:- Higher churn in the first 6 months suggests that early customer experi
 
 
 
-
-
-Insight:- 
-
-* Other Contributing Factors to Churn
+* Additional Drivers of Customer Churn
 
 <img src="Other_factors.png" width="400">
+
+Insight:- Beyond primary drivers, churn is also influenced by lack of value-added services (security, support, backup), absence of offers, and payment-related friction.
   
 
 
@@ -109,10 +127,15 @@ Insight:-
 
 ## 💡 Recommendations
 
-* Encourage long-term contracts with incentives
-* Provide better pricing strategies for high-paying customers
-* Improve onboarding experience for new customers
-* Target high-risk customers with retention offers
+Promote long-term contracts and introduce mid-term plans with added benefits to improve retention. 
+Improve onboarding and early-stage customer experience through priority support and targeted engagement. 
+Enhance fiber optic service quality through monitoring and customer feedback.
+Strengthen onboarding and early engagement to retain new customers.
+Promote alternative payment methods (e.g., credit card, auto-pay) with incentives.
+Improve offer visibility through better UI/UX and targeted communication. 
+Promote bundled streaming services to increase engagement and switching costs.
+
+
 
 ---
 
