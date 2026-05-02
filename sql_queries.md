@@ -224,7 +224,26 @@ ORDER BY churn_percentage DESC;
 - **Service Gaps:** Lack of premium tech support, absence of online security, no online backup  
 - **Customer Engagement:** Limited service usage, no offers used  
 - **Billing & Payment:** Payment method and use of paperless billing  
-- **Customer Profile:** Customers with no dependents and unmarried customers  
+- **Customer Profile:** Customers with no dependents and unmarried customers
+```
+#### Payment Method Impact on Churn
+```sql
+SELECT 
+    payment_method,
+    
+    COUNT(*) AS total_customers,
+    
+    COUNT(*) FILTER (WHERE customer_status = 'Churned') AS churned_customers,
+    
+    ROUND(
+        COUNT(*) FILTER (WHERE customer_status = 'Churned') * 100.0 / COUNT(*),
+        2
+    ) AS churn_percentage
+
+FROM customer_base
+GROUP BY payment_method
+ORDER BY churn_percentage DESC;
+ 
 
 These factors also contribute to customer churn, although their impact is less significant compared to primary drivers.
 ```
