@@ -244,10 +244,33 @@ SELECT
 FROM customer_base
 GROUP BY payment_method
 ORDER BY churn_percentage DESC;
- 
+```
+ <img src="Assets/Table14.png" width="400">
+
+ #### Payment Method Impact on Churn
+```sql
+
+SELECT 
+    offer,
+    
+    COUNT(*) AS total_customers,
+    
+    COUNT(*) FILTER (WHERE customer_status = 'Churned') AS churned_customers,
+    
+    ROUND(
+        COUNT(*) FILTER (WHERE customer_status = 'Churned') * 100.0 / COUNT(*),
+        2
+    ) AS churn_percentage
+
+FROM customer_base
+GROUP BY offer
+ORDER BY offer;
+```
+ <img src="Assets/Table15.png" width="400">
+
 
 These factors also contribute to customer churn, although their impact is less significant compared to primary drivers.
-```
+
 
 ### 8. Combined factor Analysis
 ```sql
