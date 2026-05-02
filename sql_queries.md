@@ -196,6 +196,7 @@ FROM customer_base
 GROUP BY tenure_groups
 ORDER BY churn_percentage DESC;
 ```
+ <img src="Table7.png" width="400">
 
 ### Additional Contributing Factors
 ```
