@@ -93,6 +93,7 @@ FROM customer_churn_data
 GROUP BY contract
 ORDER BY churn_percentage DESC;
 ```
+ <img src="Table2.png" width="400">
 
 ### 3. Churn Analysis by Internet Service
 ```sql
@@ -109,6 +110,7 @@ FROM customer_base
 GROUP BY internet_type
 ORDER BY churn_percentage DESC;
 ```
+ <img src="Table3.png" width="400">
 
 ### 4. Pricing Segment Analysis (Price Bucket vs Churn)
 ```sql
@@ -128,6 +130,7 @@ FROM customer_base
 GROUP BY price_bucket
 ORDER BY churn_percentage DESC;
 ```
+ <img src="Table4.png" width="400">
 
 ### 5. Age Group Churn Analysis
 ```sql
@@ -152,6 +155,7 @@ FROM customer_base
 GROUP BY age_group
 ORDER BY churn_percentage DESC;
 ```
+ <img src="Table5.png" width="400">
 
 ### 6. Churn Reason Analysis
 ```sql
@@ -171,6 +175,7 @@ FROM customer_base
 GROUP BY churn_category
 ORDER BY churned_customers DESC;
 ```
+ <img src="Table6.png" width="400">
 
 ### 7. Tenure-Based Churn Analysis
 ```sql
