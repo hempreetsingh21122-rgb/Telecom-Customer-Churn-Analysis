@@ -68,7 +68,7 @@ This project focuses on analyzing customer churn behavior in a telecom company. 
 
 * Churn by Contract Type
   
- <img src="Contract.png" width="400">
+ <img src="Assets/Contract.png" width="400">
   
 Insight:- Customers on monthly plans are more likely to churn due to lower commitment compared to long-term contracts.
 
@@ -76,7 +76,7 @@ Insight:- Customers on monthly plans are more likely to churn due to lower commi
 
 * Customer Churn Across Internet Service Types
 
- <img src="Internet_type.png" width="400">
+ <img src="Assets/Internet_type.png" width="400">
 
  Insight:- Higher churn observed among Fiber Optic customers suggests possible dissatisfaction with service quality. 
  
@@ -85,7 +85,7 @@ Insight:- Customers on monthly plans are more likely to churn due to lower commi
   
 * Impact of Monthly Charges on Customer Churn
 
-<img src="Pricing.png" width="400">
+<img src="Assets/Pricing.png" width="400">
 
 Insight:- This suggests that pricing may influence customer retention.
 
@@ -93,7 +93,7 @@ Insight:- This suggests that pricing may influence customer retention.
 
 * Churn by Age group
 
-<img src="age_group.png" width="400">
+<img src="Assets/age_group.png" width="400">
 
 Insight:- Higher churn observed among senior customers, indicating potential service dissatisfaction within this segment.
 
@@ -101,7 +101,7 @@ Insight:- Higher churn observed among senior customers, indicating potential ser
 
 * Reasons for Customer Churn
 
-<img src="churn_reason.png" width="400">
+<img src="Assets/churn_reason.png" width="400">
 
 Insight:- Churn is primarily driven by competitors, while attitude-related issues and dissatisfaction also contribute significantly.
 
@@ -109,7 +109,7 @@ Insight:- Churn is primarily driven by competitors, while attitude-related issue
 
 * Churn Trends Across Customer Tenure
 
-<img src="Churn by tenure.png" width="400">
+<img src="Assets/Churn by tenure.png" width="400">
 
 Insight:- Higher churn in the first 6 months suggests that early customer experience plays a critical role in retention.
 
@@ -117,7 +117,7 @@ Insight:- Higher churn in the first 6 months suggests that early customer experi
 
 * Additional Drivers of Customer Churn
 
-<img src="Other_factors.png" width="400">
+<img src="Assets/Other_factors.png" width="400">
 
 Insight:- Beyond primary drivers, churn is also influenced by lack of value-added services (security, support, backup), absence of offers, and payment-related friction.
   
