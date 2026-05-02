@@ -76,6 +76,7 @@ SELECT
 FROM customer_churn_data, total t
 GROUP BY customer_status, t.total_customers;
 ```
+ <img src="Table1.png" width="400">
 
 ### 2. Churn Analysis by Contract Type
 ```sql
