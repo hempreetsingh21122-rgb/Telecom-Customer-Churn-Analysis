@@ -318,6 +318,7 @@ SELECT internet_type,
        ROUND(total_customers*100.0/SUM(total_customers) OVER(PARTITION BY internet_type, payment_method),2) AS distribution_percent
 	   FROM cte 
 ```
+ <img src="Table13.png" width="600">
 
 
  ```sql
