@@ -107,45 +107,6 @@ SELECT
 FROM customer_base
 GROUP BY internet_type
 ORDER BY churn_percentage DESC;
-
-### 3.2 Contract Distribution within Internet Service Types
-
-SELECT 
-    internet_type,
-    contract,
-    total_customers,
-    SUM(total_customers) OVER (PARTITION BY internet_type) AS total_by_internet,
-    ROUND(
-        total_customers * 100.0 / 
-        SUM(total_customers) OVER (PARTITION BY internet_type),
-        2
-    ) AS distribution_percentage
-FROM (
-    SELECT 
-        internet_type,
-        contract,
-        COUNT(*) AS total_customers
-    FROM customer_base
-    GROUP BY internet_type, contract
-) AS sub
-ORDER BY internet_type, distribution_percentage DESC;
-
-
-### 3.3 Pricing Impact on Churn
-
-SELECT 
-    contract,
-    ROUND(
-        AVG(monthly_charges_revised) FILTER (WHERE customer_status = 'Churned'),   --  churned_customers_monthly_charges
-        2
-    ) AS avg_churned_charges,
-    ROUND(
-        AVG(monthly_charges_revised) FILTER (WHERE customer_status = 'Stayed'),    --   active_customers_monthly_charges
-        2
-    ) AS avg_active_charges
-FROM customer_base
-GROUP BY contract
-ORDER BY contract;
 ```
 
 ### 4. Pricing Segment Analysis (Price Bucket vs Churn)
@@ -189,7 +150,99 @@ SELECT
 FROM customer_base
 GROUP BY age_group
 ORDER BY churn_percentage DESC;
+```
 
+### 6. Churn Reason Analysis
+```sql
+
+SELECT 
+    churn_category,
+    
+    COUNT(*) FILTER (WHERE customer_status = 'Churned') AS churned_customers,
+    
+    ROUND(
+        COUNT(*) FILTER (WHERE customer_status = 'Churned') * 100.0 
+        / SUM(COUNT(*) FILTER (WHERE customer_status = 'Churned')) OVER (),
+        2
+    ) AS contribution_percentage
+
+FROM customer_base
+GROUP BY churn_category
+ORDER BY churned_customers DESC;
+```
+
+### 7. Tenure-Based Churn Analysis
+```sql
+
+SELECT 
+    tenure_groups,
+    
+    COUNT(*) AS total_customers,
+    
+    COUNT(*) FILTER (WHERE customer_status = 'Churned') AS churned_customers,
+    
+    ROUND(
+        COUNT(*) FILTER (WHERE customer_status = 'Churned') * 100.0 / COUNT(*),
+        2
+    ) AS churn_percentage
+
+FROM customer_base
+GROUP BY tenure_groups
+ORDER BY churn_percentage DESC;
+```
+
+### Additional Contributing Factors
+```
+
+- **Service Gaps:** Lack of premium tech support, absence of online security, no online backup  
+- **Customer Engagement:** Limited service usage, no offers used  
+- **Billing & Payment:** Payment method and use of paperless billing  
+- **Customer Profile:** Customers with no dependents and unmarried customers  
+
+These factors also contribute to customer churn, although their impact is less significant compared to primary drivers.
+```
+
+### 8. Combined factor Analysis
+```sql
+
+### 3.2 Contract Distribution within Internet Service Types
+
+SELECT 
+    internet_type,
+    contract,
+    total_customers,
+    SUM(total_customers) OVER (PARTITION BY internet_type) AS total_by_internet,                -- Customers Distribution
+    ROUND(
+        total_customers * 100.0 / 
+        SUM(total_customers) OVER (PARTITION BY internet_type),                       -- Customers churned
+        2
+    ) AS distribution_percentage
+FROM (
+    SELECT 
+        internet_type,
+        contract,
+        COUNT(*) AS total_customers
+    FROM customer_base
+    GROUP BY internet_type, contract
+) AS sub
+ORDER BY internet_type, distribution_percentage DESC;
+
+
+### 3.3 Pricing Impact on Churn
+
+SELECT 
+    contract,
+    ROUND(
+        AVG(monthly_charges_revised) FILTER (WHERE customer_status = 'Churned'),   --  churned_customers_monthly_charges
+        2
+    ) AS avg_churned_charges,
+    ROUND(
+        AVG(monthly_charges_revised) FILTER (WHERE customer_status = 'Stayed'),    --   active_customers_monthly_charges
+        2
+    ) AS avg_active_charges
+FROM customer_base
+GROUP BY contract
+ORDER BY contract;
 
 ### 5.2. Age Group and Internet Service Interaction Analysis
 
@@ -234,7 +287,7 @@ SELECT
     
     ROUND(
         total_customers * 100.0 / 
-        SUM(total_customers) OVER (PARTITION BY age_group),
+        SUM(total_customers) OVER (PARTITION BY age_group),                         -- Customer Distribution
         2
     ) AS distribution_percentage
 
@@ -246,7 +299,7 @@ FROM (
         COUNT(*) AS total_customers,
         
         ROUND(
-            COUNT(*) FILTER (WHERE customer_status = 'Churned') * 100.0 / COUNT(*),
+            COUNT(*) FILTER (WHERE customer_status = 'Churned') * 100.0 / COUNT(*),                -- Customers churned
             2
         ) AS churn_percentage
         
@@ -257,8 +310,48 @@ FROM (
 ORDER BY age_group, distribution_percentage DESC;
 ```
 
+## 🔎 Advanced Analysis
+```sql
 
+### Multi-Factor Churn Contribution Analysis by Age Group
 
+WITH base AS (
+    SELECT 
+        age_group,
+        contract,
+        internet_type,
+        
+        COUNT(*) AS total_customers,
+        COUNT(*) FILTER (WHERE customer_status = 'Churned') AS churned_customers
+
+    FROM customer_base
+    GROUP BY age_group, contract, internet_type
+)
+
+SELECT 
+    age_group,
+    contract,
+    internet_type,
+    
+    total_customers,
+    churned_customers,
+
+    -- Churn %
+    ROUND(
+        churned_customers * 100.0 / total_customers,
+        2
+    ) AS churn_percentage,
+
+    -- Distribution within age + internet
+    ROUND(
+        total_customers * 100.0 /
+        SUM(total_customers) OVER (PARTITION BY age_group, internet_type),
+        2
+    ) AS distribution_percentage
+
+FROM base
+ORDER BY age_group, internet_type, distribution_percentage DESC;
+```
 
 
 ---
