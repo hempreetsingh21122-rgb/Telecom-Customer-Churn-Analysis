@@ -132,7 +132,27 @@ ORDER BY churn_percentage DESC;
 ```
  <img src="Table4.png" width="400">
 
-### 5. Age Group Churn Analysis
+ ### 5. Pricing Impact on Churn
+ ```sql
+
+SELECT 
+    contract,
+    ROUND(
+        AVG(monthly_charges_revised) FILTER (WHERE customer_status = 'Churned'),   --  churned_customers_monthly_charges
+        2
+    ) AS avg_churned_charges,
+    ROUND(
+        AVG(monthly_charges_revised) FILTER (WHERE customer_status = 'Stayed'),    --   active_customers_monthly_charges
+        2
+    ) AS avg_active_charges
+FROM customer_base
+GROUP BY contract
+ORDER BY contract;
+```
+ <img src="Table10.png" width="400">
+
+
+### 6. Age Group Churn Analysis
 ```sql
 
 SELECT 
@@ -157,7 +177,7 @@ ORDER BY churn_percentage DESC;
 ```
  <img src="Table5.png" width="400">
 
-### 6. Churn Reason Analysis
+### 7. Churn Reason Analysis
 ```sql
 
 SELECT 
@@ -177,7 +197,7 @@ ORDER BY churned_customers DESC;
 ```
  <img src="Table6.png" width="400">
 
-### 7. Tenure-Based Churn Analysis
+### 8. Tenure-Based Churn Analysis
 ```sql
 
 SELECT 
@@ -233,23 +253,10 @@ FROM (
     GROUP BY internet_type, contract
 ) AS sub
 ORDER BY internet_type, distribution_percentage DESC;
-
-
-### 3.3 Pricing Impact on Churn
-
-SELECT 
-    contract,
-    ROUND(
-        AVG(monthly_charges_revised) FILTER (WHERE customer_status = 'Churned'),   --  churned_customers_monthly_charges
-        2
-    ) AS avg_churned_charges,
-    ROUND(
-        AVG(monthly_charges_revised) FILTER (WHERE customer_status = 'Stayed'),    --   active_customers_monthly_charges
-        2
-    ) AS avg_active_charges
-FROM customer_base
-GROUP BY contract
-ORDER BY contract;
+```
+ <img src="Table8.png" width="500">
+  
+```sql
 
 ### 5.2. Age Group and Internet Service Interaction Analysis
 
@@ -283,6 +290,38 @@ FROM (
 ) AS sub
 
 ORDER BY age_group, distribution_percentage DESC;
+```
+ <img src="Table11.png" width="500">
+
+ ```sql
+
+WITH cte AS(
+SELECT internet_type, 
+       payment_method, 
+	   contract,
+	   COUNT(*) Total_customers, 
+	   COUNT(*) FILTER(WHERE customer_status = 'Churned') AS churned_customers
+       FROM customer_base
+       GROUP BY internet_type, 
+	            payment_method,
+				contract
+       ORDER BY internet_type, 
+                payment_method,
+				contract
+)
+SELECT internet_type, 
+       payment_method, 
+	   contract,
+	   churned_customers, 
+	   Total_customers, 
+       ROUND(churned_customers*100.0/Total_customers,2) AS churned_percent, 
+       ROUND(total_customers*100.0/SUM(total_customers) OVER(PARTITION BY internet_type, payment_method),2) AS distribution_percent
+	   FROM cte 
+```
+
+
+ ```sql
+
 
 ### 5.3. Age Group and Contract Type Interaction Analysis
 
@@ -316,6 +355,8 @@ FROM (
 
 ORDER BY age_group, distribution_percentage DESC;
 ```
+ <img src="Table12.png" width="500">
+
 
 ## 🔎 Advanced Analysis
 ```sql
