@@ -75,8 +75,10 @@ SELECT
     ROUND(COUNT(*) * 100.0 / t.total_customers, 2) AS percentage
 FROM customer_churn_data, total t
 GROUP BY customer_status, t.total_customers;
+```
 
 ### 2. Churn Analysis by Contract Type
+```sql
 
 SELECT 
     contract,
@@ -89,9 +91,10 @@ SELECT
 FROM customer_churn_data
 GROUP BY contract
 ORDER BY churn_percentage DESC;
+```
 
-
-### 3.1 Churn Analysis by Internet Service
+### 3. Churn Analysis by Internet Service
+```sql
 
 SELECT 
     internet_type,
@@ -143,8 +146,10 @@ SELECT
 FROM customer_base
 GROUP BY contract
 ORDER BY contract;
+```
 
-### 4 Pricing Segment Analysis (Price Bucket vs Churn)
+### 4. Pricing Segment Analysis (Price Bucket vs Churn)
+```sql
 
 SELECT 
     price_bucket,
@@ -160,8 +165,10 @@ SELECT
 FROM customer_base
 GROUP BY price_bucket
 ORDER BY churn_percentage DESC;
+```
 
-### 5.1. Age Group Churn Analysis
+### 5. Age Group Churn Analysis
+```sql
 
 SELECT 
     age_group,
@@ -182,6 +189,7 @@ SELECT
 FROM customer_base
 GROUP BY age_group
 ORDER BY churn_percentage DESC;
+
 
 ### 5.2. Age Group and Internet Service Interaction Analysis
 
@@ -247,7 +255,7 @@ FROM (
 ) AS sub
 
 ORDER BY age_group, distribution_percentage DESC;
-
+```
 
 
 
