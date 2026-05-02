@@ -76,7 +76,7 @@ SELECT
 FROM customer_churn_data, total t
 GROUP BY customer_status, t.total_customers;
 ```
- <img src="Table1.png" width="400">
+ <img src="Assets/Table1.png" width="400">
 
 ### 2. Churn Analysis by Contract Type
 ```sql
@@ -93,7 +93,7 @@ FROM customer_churn_data
 GROUP BY contract
 ORDER BY churn_percentage DESC;
 ```
- <img src="Table2.png" width="400">
+ <img src="Assets/Table2.png" width="400">
 
 ### 3. Churn Analysis by Internet Service
 ```sql
@@ -110,7 +110,7 @@ FROM customer_base
 GROUP BY internet_type
 ORDER BY churn_percentage DESC;
 ```
- <img src="Table3.png" width="400">
+ <img src="Assets/Table3.png" width="400">
 
 ### 4. Pricing Segment Analysis (Price Bucket vs Churn)
 ```sql
@@ -130,7 +130,7 @@ FROM customer_base
 GROUP BY price_bucket
 ORDER BY churn_percentage DESC;
 ```
- <img src="Table4.png" width="400">
+ <img src="Assets/Table4.png" width="400">
 
  ### 5. Pricing Impact on Churn
  ```sql
@@ -149,7 +149,7 @@ FROM customer_base
 GROUP BY contract
 ORDER BY contract;
 ```
- <img src="Table10.png" width="400">
+ <img src="Assets/Table10.png" width="400">
 
 
 ### 6. Age Group Churn Analysis
@@ -175,7 +175,7 @@ FROM customer_base
 GROUP BY age_group
 ORDER BY churn_percentage DESC;
 ```
- <img src="Table5.png" width="400">
+ <img src="Assets/Table5.png" width="400">
 
 ### 7. Churn Reason Analysis
 ```sql
@@ -195,7 +195,7 @@ FROM customer_base
 GROUP BY churn_category
 ORDER BY churned_customers DESC;
 ```
- <img src="Table6.png" width="400">
+ <img src="Assets/Table6.png" width="400">
 
 ### 8. Tenure-Based Churn Analysis
 ```sql
@@ -216,7 +216,7 @@ FROM customer_base
 GROUP BY tenure_groups
 ORDER BY churn_percentage DESC;
 ```
- <img src="Table7.png" width="400">
+ <img src="Assets/Table7.png" width="400">
 
 ### Additional Contributing Factors
 ```
@@ -273,7 +273,7 @@ FROM (
 ) AS sub
 ORDER BY internet_type, distribution_percentage DESC;
 ```
- <img src="Table8.png" width="500">
+ <img src="Assets/Table8.png" width="500">
   
 ```sql
 
@@ -310,7 +310,7 @@ FROM (
 
 ORDER BY age_group, distribution_percentage DESC;
 ```
- <img src="Table11.png" width="500">
+ <img src="Assets/Table11.png" width="500">
 
  ```sql
 
@@ -337,7 +337,7 @@ SELECT internet_type,
        ROUND(total_customers*100.0/SUM(total_customers) OVER(PARTITION BY internet_type, payment_method),2) AS distribution_percent
 	   FROM cte 
 ```
- <img src="Table13.png" width="600">
+ <img src="Assets/Table13.png" width="600">
 
 
  ```sql
@@ -375,7 +375,7 @@ FROM (
 
 ORDER BY age_group, distribution_percentage DESC;
 ```
- <img src="Table12.png" width="500">
+ <img src="Assets/Table12.png" width="500">
 
 
 ## 🔎 Advanced Analysis
