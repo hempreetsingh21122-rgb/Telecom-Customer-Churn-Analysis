@@ -228,6 +228,7 @@ ORDER BY churn_percentage DESC;
 ```
 #### Payment Method Impact on Churn
 ```sql
+
 SELECT 
     payment_method,
     
