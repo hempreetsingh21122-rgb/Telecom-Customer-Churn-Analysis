@@ -150,10 +150,10 @@ This analysis helps businesses understand customer behavior and take proactive s
 
 ---
 
-📌 Full SQL queries can be accessed here:  
+## 📌 Full SQL queries can be accessed here:  
 👉 [View SQL Queries](./sql_queries.md)
 
-## 📊 Dashboard
+## 📊 Interactive Dashboard
 👉 [View Full Dashboard](./dashboard.md)
 
 ## 🔗 Connect with Me
