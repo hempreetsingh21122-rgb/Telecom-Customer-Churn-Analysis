@@ -130,7 +130,6 @@ Insight:- Beyond primary drivers, churn is also influenced by lack of value-adde
 - Promote long-term contracts and introduce mid-term plans with added benefits to improve retention. 
 - Improve onboarding and early-stage customer experience through priority support and targeted engagement. 
 - Enhance fiber optic service quality through monitoring and customer feedback.
-- Strengthen onboarding and early engagement to retain new customers.
 - Promote alternative payment methods (e.g., credit card, auto-pay) with incentives.
 - Improve offer visibility through better UI/UX and targeted communication. 
 - Promote bundled streaming services to increase engagement and switching costs.
