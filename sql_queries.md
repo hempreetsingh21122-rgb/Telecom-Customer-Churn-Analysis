@@ -86,7 +86,7 @@ SELECT
     COUNT(*) AS total_customers,
     COUNT(*) FILTER (WHERE customer_status = 'Churned') AS churned_customers,
     ROUND(
-        COUNT(*) FILTER (WHERE customer_status = 'Churned') * 100.0 / COUNT(*),
+        COUNT(*) FILTER (WHERE customer_status = 'Churned') * 100.0 / COUNT(*),             --- Percentage of customers churned
         2
     ) AS churn_percentage
 FROM customer_churn_data
@@ -162,7 +162,7 @@ SELECT
     COUNT(*) FILTER (WHERE customer_status = 'Churned') AS churned_customers,
     
     ROUND(
-        COUNT(*) FILTER (WHERE customer_status = 'Churned') * 100.0 / COUNT(*),                   -- Customers churned
+        COUNT(*) FILTER (WHERE customer_status = 'Churned') * 100.0 / COUNT(*),                   -- percentage of customers churned
         2
     ) AS churn_percentage,
     
@@ -247,7 +247,7 @@ ORDER BY churn_percentage DESC;
 ```
  <img src="Assets/Table14.png" width="400">
 
- #### Payment Method Impact on Churn
+ #### Impact of Promotional Offers on Customer Churn
 ```sql
 
 SELECT 
@@ -281,10 +281,10 @@ SELECT
     internet_type,
     contract,
     total_customers,
-    SUM(total_customers) OVER (PARTITION BY internet_type) AS total_by_internet,                -- Customers Distribution
+    SUM(total_customers) OVER (PARTITION BY internet_type) AS total_by_internet,             
     ROUND(
         total_customers * 100.0 / 
-        SUM(total_customers) OVER (PARTITION BY internet_type),                       -- Customers churned
+        SUM(total_customers) OVER (PARTITION BY internet_type),                       -- Customers Distribution
         2
     ) AS distribution_percentage
 FROM (
@@ -324,7 +324,7 @@ FROM (
         COUNT(*) AS total_customers,
         
         ROUND(
-            COUNT(*) FILTER (WHERE customer_status = 'Churned') * 100.0 / COUNT(*),      -- Customers churned
+            COUNT(*) FILTER (WHERE customer_status = 'Churned') * 100.0 / COUNT(*),      -- percentage of customers churned
             2
         ) AS churned_percent
         
@@ -389,7 +389,7 @@ FROM (
         COUNT(*) AS total_customers,
         
         ROUND(
-            COUNT(*) FILTER (WHERE customer_status = 'Churned') * 100.0 / COUNT(*),                -- Customers churned
+            COUNT(*) FILTER (WHERE customer_status = 'Churned') * 100.0 / COUNT(*),                -- percentage of customers churned
             2
         ) AS churn_percentage
         
@@ -443,7 +443,7 @@ SELECT
 
 FROM base
 ORDER BY age_group, internet_type, distribution_percentage DESC;
-```
 
 
+📌 Note: Only key queries are included here to highlight the most relevant insights. Additional exploratory queries were used during analysis but are not shown to maintain clarity.
 ---
