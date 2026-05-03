@@ -153,6 +153,9 @@ This analysis helps businesses understand customer behavior and take proactive s
 📌 Full SQL queries can be accessed here:  
 👉 [View SQL Queries](./sql_queries.md)
 
+## 📊 Dashboard
+👉 [View Full Dashboard](./dashboard.md)
+
 ## 🔗 Connect with Me
 
 * LinkedIn: https://www.linkedin.com/in/hempreet-singh-8543b4247
