@@ -156,6 +156,12 @@ This analysis helps businesses understand customer behavior and take proactive s
 ## 📊 Interactive Dashboard
 👉 [View Full Dashboard](./dashboard.md)
 
+## 🎥 Dashboard Demo
+
+👉 [Watch Demo](https://youtu.be/-T7wjfr8TV8)
+
+*Note: Video quality may appear slightly reduced due to compression.*
+
 ## 🔗 Connect with Me
 
 * LinkedIn: https://www.linkedin.com/in/hempreet-singh-8543b4247
